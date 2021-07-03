@@ -1,0 +1,52 @@
+.toast {
+  width: 350px;
+  min-height: 75px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  position: relative;
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px rgb(69, 69, 69);
+  transition: 0.2s;
+
+  animation: fadeIn 0.75s;
+  opacity: 1;
+}
+.toast:hover {
+  transition: 0.2s;
+  transform: scale(0.95);
+  box-shadow: 0px 0px 3px gray;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.message {
+}
+
+.success {
+  background-color: #83bd92;
+}
+.warning {
+  background-color: #bda883;
+}
+.error {
+  background-color: #bd8383;
+}
+.info {
+  background-color: #8398bd;
+}
