@@ -1,43 +1,27 @@
 .toast {
   width: 350px;
-  min-height: 75px;
-
-  box-sizing: border-box;
-
   display: flex;
+  min-height: 75px;
+  position: relative;
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
-
-  position: relative;
+  opacity: 1;
   padding: 15px;
   color: white;
+  cursor: pointer;
   border-radius: 5px;
+  box-sizing: border-box;
   box-shadow: 0px 0px 2px rgb(69, 69, 69);
-  transition: 0.2s;
 
+  transition: 0.2s;
   animation: fadeIn 0.75s;
-  opacity: 1;
 }
 .toast:hover {
   transition: 0.2s;
   transform: scale(0.95);
   box-shadow: 0px 0px 3px gray;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.message {
-}
-
 .success {
   background-color: #83bd92;
 }
@@ -49,4 +33,13 @@
 }
 .info {
   background-color: #8398bd;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
