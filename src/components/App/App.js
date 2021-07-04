@@ -9,7 +9,6 @@ export const App = () => {
 
   const addToast = () => {
     toastRef.current.addMessage({ mode, message: text });
-    setText('');
   };
 
   return (
@@ -26,6 +25,7 @@ export const App = () => {
             e.preventDefault();
             if (text) {
               addToast();
+              setText('');
             }
           }}
         >
