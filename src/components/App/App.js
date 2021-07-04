@@ -6,6 +6,7 @@ export const App = () => {
   const toastRef = useRef();
   const [text, setText] = useState('');
   const [mode, setMode] = useState('info');
+  const [autoClose, setAutoClose] = useState(false);
 
   const addToast = () => {
     toastRef.current.addMessage({ mode, message: text });
@@ -29,6 +30,15 @@ export const App = () => {
             }
           }}
         >
+          <div className={styles.autoClose}>
+            <input
+              type="checkbox"
+              value={autoClose}
+              onChange={e => setAutoClose(e.target.checked)}
+            />
+            <label>Auto Close</label>
+          </div>
+
           <select value={mode} onChange={e => setMode(e.target.value)}>
             <option value="info">Info</option>
             <option value="success">Success</option>
@@ -37,6 +47,7 @@ export const App = () => {
           </select>
 
           <input
+            type="text"
             value={text}
             placeholder="Toast Value"
             onChange={e => setText(e.target.value)}
@@ -46,7 +57,7 @@ export const App = () => {
         </form>
       </div>
 
-      <ToastPortal autoClose ref={toastRef} />
+      <ToastPortal ref={toastRef} autoClose={autoClose} />
     </div>
   );
 };
