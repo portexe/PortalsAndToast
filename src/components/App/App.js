@@ -6,10 +6,11 @@ export const App = () => {
   const toastRef = useRef();
   const [text, setText] = useState('');
   const [mode, setMode] = useState('info');
-  const [autoClose, setAutoClose] = useState(false);
+  const [autoClose, setAutoClose] = useState({shouldAutoClose: false, toastId: null});
 
   const addToast = () => {
-    toastRef.current.addMessage({ mode, message: text });
+    const toastId = toastRef.current.addMessage({ mode, message: text });
+    return toastId;
   };
 
   return (
@@ -25,16 +26,19 @@ export const App = () => {
           onSubmit={e => {
             e.preventDefault();
             if (text) {
-              addToast();
+              const toastId = addToast();
               setText('');
+              if (autoClose.shouldAutoClose) {
+                setAutoClose( {shouldAutoClose: true, toastId: toastId} );
+              }
             }
           }}
         >
           <div className={styles.autoClose}>
             <input
               type="checkbox"
-              value={autoClose}
-              onChange={e => setAutoClose(e.target.checked)}
+              value={autoClose.shouldAutoClose}
+              onChange={e => setAutoClose({shouldAutoClose: e.target.checked, toastId: null})}
             />
             <label>Auto Close</label>
           </div>

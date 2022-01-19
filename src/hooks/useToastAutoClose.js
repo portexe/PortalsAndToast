@@ -15,8 +15,8 @@ export const useToastAutoClose = ({
   }, [removing, setToasts]);
 
   useEffect(() => {
-    if (autoClose && toasts.length) {
-      const id = toasts[toasts.length - 1].id;
+    if (autoClose.shouldAutoClose && toasts.length) {
+      const id = autoClose.toastId;
       setTimeout(() => setRemoving(id), autoCloseTime);
     }
   }, [toasts, autoClose, autoCloseTime]);
